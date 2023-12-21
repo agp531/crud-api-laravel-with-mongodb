@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +31,6 @@ Route::get('/ping', function (Request  $request) {
     }
     return ['msg' => $msg];
     });
+
+
+Route::resource('customers', CustomerController::class)->only(['index','store', 'show', 'update', 'destroy']);
